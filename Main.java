@@ -1,6 +1,6 @@
 public class Main
 {
-    public static int maxSum(int[] arr,int k){
+    public static int maxSum(int[] arr,int k) throws Exception{
         if(k<=0 || k>=arr.length)
             throw new Exception("out");
         int windowSum=0;
@@ -16,7 +16,7 @@ public class Main
         }
         return maxSum;
     }
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		int[] arr={2,1,5,1,3,2};
 		System.out.println(maxSum(arr,3));
 		
