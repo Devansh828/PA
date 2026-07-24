@@ -1,5 +1,5 @@
 
-public class Main
+public class LinearSearch
 {
     
     static int maxElement(int[] arr){
