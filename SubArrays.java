@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main
+public class SubArrays
 {
     static List<List<Integer>> ans=new ArrayList<>();
     static List<List<Integer>> ans1=new ArrayList<>();

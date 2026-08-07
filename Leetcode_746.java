@@ -1,4 +1,4 @@
-class Solution {
+class Leetcode746 {
 
     public int solve(int[] cost,int index){
         if(index>=cost.length) return 0;

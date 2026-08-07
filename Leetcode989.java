@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class Solution {
+class Leetcode989 {
     public List<Integer> addToArrayForm(int[] num, int k) {
         List<Integer> ls=new ArrayList<>();
         int carry=0;
