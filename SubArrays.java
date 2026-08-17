@@ -18,6 +18,8 @@ public class SubArrays
         current.remove(current.size()-1);
     }
     
+
+    
     
     
     static void solve1(int[] nums,int index,List<Integer> current){
@@ -37,7 +39,7 @@ public class SubArrays
 		
 		int nums[]={1,2,3};
 		
-// 		solve(nums,0,new ArrayList<>());
+		// solve(nums,0,new ArrayList<>());
 		solve1(nums,nums.length-1,new ArrayList<>());
 		
 		System.out.print(ans1);
