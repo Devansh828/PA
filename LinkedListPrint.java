@@ -29,6 +29,36 @@ public class LinkedListPrint {
         return count;
     }
 
+    public static int middleNode(Node head) {
+        if (head == null) {
+            return -1;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.data;
+    }
+
+    static Node reverseList(Node head) {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
 
     public static void main(String[] args) {
         Node head = new Node(1);
@@ -37,6 +67,9 @@ public class LinkedListPrint {
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
         printList(head);
+        System.out.println("Middle node: " + middleNode(head));
+        System.out.print("Reversed list: ");
+        printList(reverseList(head));
     }
 
 
