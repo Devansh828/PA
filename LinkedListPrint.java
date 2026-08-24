@@ -1,3 +1,5 @@
+
+
 public class LinkedListPrint {
     
     static class Node {
@@ -69,7 +71,7 @@ public class LinkedListPrint {
         printList(head);
         System.out.println("Middle node: " + middleNode(head));
         System.out.print("Reversed list: ");
-        printList(reverseList(head));
+        printList(reverseList(head)); 
     }
 
 
