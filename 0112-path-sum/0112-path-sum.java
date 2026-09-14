@@ -16,13 +16,12 @@
 class Solution {
     public boolean help(TreeNode root, int targetSum,int currentSum) {
         if(root==null) return false;
+
         currentSum+=root.val;
+
         if (root.right==null && root.left == null && targetSum == currentSum)
             return true;
-        else if (root.right==null && root.left == null && targetSum != currentSum)
-            return false;
         
-
         return (help(root.left, targetSum,currentSum) || help(root.right, targetSum,currentSum));
     }
 
