@@ -48,11 +48,17 @@ public class Josephus {
 
 
 
+    
+
+
+
     public static void main(String[] args) {
         int n = 6;
-        int k = 2;
+        // int k = 2;
 
-        int winner = josephus(n, k);
-        System.out.println("Winner is: " + winner);
+        // int winner = josephus(n, k);
+        // System.out.println("Winner is: " + winner);
+
+
     }
 }
