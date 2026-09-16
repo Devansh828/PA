@@ -14,30 +14,29 @@
  * }
  */
 class Solution {
-    private void help(TreeNode root,int[] ans,int a){
-        if(root==null) return;
+    private int help(TreeNode root,int a){
+        if(root==null) return 0;
         if(root.left==null && root.right==null) {
             a=a*10+root.val;
-            ans[0]=ans[0]+a;
-            return;
+            return a;
         }
 
         a=a*10+root.val;
 
-        help(root.left,ans,a);
-        help(root.right,ans,a);
+        int left=help(root.left,a);
+        int right=help(root.right,a);
 
-
+        return left+right;
 
     }
     public int sumNumbers(TreeNode root) {
-        int[] ans={0};
+        // int[] ans={0};
 
         int a=0;
 
-        help(root,ans,a);
+        int ans=help(root,a);
 
-        return ans[0];
+        return ans;
 
 
     }
