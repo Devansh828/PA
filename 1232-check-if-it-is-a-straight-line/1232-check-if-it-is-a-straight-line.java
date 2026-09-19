@@ -10,7 +10,7 @@ class Solution {
         float y2=(float)(coordinates[1][1]);
 
         float slope=(y2-y1)/(x2-x1);
-        System.out.println(slope);
+        // System.out.println(slope);
         float c=y1-slope*x1;
 
         boolean sameX = true, sameY = true;
@@ -26,7 +26,7 @@ class Solution {
             float y3=(float)(coordinates[i][1]);
 
             float output=slope*x3 + c - y3;
-            System.out.println(output);
+            // System.out.println(output);
             if(output!=0) return false;
         }
 
