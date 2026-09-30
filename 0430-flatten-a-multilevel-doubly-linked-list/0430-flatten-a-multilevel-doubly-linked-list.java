@@ -9,37 +9,32 @@ class Node {
 */
 
 class Solution {
-    public Node flatten(Node head) {
-        if(head==null) return head;
-        Node temp=head;
-
-        List<Node> l=new ArrayList<>();
-        Node prevNode=null;
-        while(temp!=null){
-            Node nextNode=temp.next;
-            if(temp.child!=null){
-                if(nextNode!=null)
-                l.add(nextNode);
-                Node c=temp.child;
-                temp.next=c;
-                c.prev=temp;
-                temp.child=null;
-            }
-            prevNode=temp;
-            temp=temp.next;
-
-        }
-
-        for(int i=l.size()-1;i>=0;i--){
-            while(prevNode.next!=null){
-                prevNode=prevNode.next;
-            }
+    void help(Node head){
+        if(head==null) return;
+        Node nextNode=null;
+        if(head.child!=null){
+            nextNode=head.next;
             
-            flatten(l.get(i));
+            head.next=head.child;
 
-            l.get(i).prev=prevNode;
-            prevNode.next=l.get(i);
+            head.next.prev=head;
+
+            head.child=null;
         }
+
+        help(head.next);
+
+        while(head.next!=null){
+            head=head.next;
+        }
+
+        head.next=nextNode;
+        if(nextNode!=null)
+        nextNode.prev=head;
+    }
+    public Node flatten(Node head) {
+        help(head);
+
         return head;
     }
 }
