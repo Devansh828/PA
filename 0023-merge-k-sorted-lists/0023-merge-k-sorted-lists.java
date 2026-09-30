@@ -9,37 +9,57 @@
  * }
  */
 class Solution {
-    public ListNode mergeKLists(ListNode[] lists) {
-        if(lists.length==0)  return null;
-        int count=lists.length;
+
+    private ListNode merge(ListNode head1,ListNode head2){
+        if(head1==null && head2==null){
+            return null;
+        }
+        else if(head1==null) return head2;
+        else if(head2==null) return head1;
+
         ListNode ans=new ListNode(0);
         ListNode temp=ans;
-        while(count!=0){
-            int min_val=Integer.MAX_VALUE;
-            ListNode node=null;
-            int index=-1;
-            for(int i=0;i<lists.length;i++){
-                if(lists[i]!=null)
-                if(min_val>lists[i].val){
-                    min_val=lists[i].val;
-                    node=lists[i];
-                    index=i;
-                }
-            }
-            
-            if(temp!=null){
-                temp.next=node;
-                temp=temp.next;
-            }
-            
+        ListNode temp1=head1;
+        ListNode temp2=head2;
+        while(temp1!=null && temp2!=null){
 
+            if(temp1.val<=temp2.val){
+                temp.next=temp1;
+                temp1=temp1.next;
+            }
 
-            if(index>=0)
-            lists[index]=lists[index].next;
-            
-            if((index>=0 && lists[index]==null) || index==-1) count--;
+            else{
+                temp.next=temp2;
+                temp2=temp2.next;
+            }
+
+            temp=temp.next;
+
+        }
+
+        if(temp1!=null){
+            temp.next=temp1;
+            // temp=ans.next;
+            // temp1=temp1.next;
+        }
+        if(temp2!=null){
+            temp.next=temp2;
+            // ans=ans.next;
+            // temp2=temp2.next;
         }
 
         return ans.next;
+
+
+    }
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode ans=null;
+
+        for(int i=0;i<lists.length;i++){
+            ans=merge(ans,lists[i]);
+        }
+
+        return ans;
+
     }
 }
