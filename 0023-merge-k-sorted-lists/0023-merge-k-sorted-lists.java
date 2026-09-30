@@ -52,14 +52,36 @@ class Solution {
 
 
     }
+
+    ListNode mergeSort(ListNode[] lists,int start,int end){
+
+        if(start>end) return null;
+
+        if(start==end) return lists[start];
+
+        int middle=start+(end-start)/2;
+
+        ListNode left=mergeSort(lists,start,middle);
+
+        ListNode right=mergeSort(lists,middle+1,end);
+
+        lists[start]=merge(left,right);
+
+        return lists[start];
+
+    }
+
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode ans=null;
+        // ListNode ans=null;
 
-        for(int i=0;i<lists.length;i++){
-            ans=merge(ans,lists[i]);
-        }
+        // for(int i=0;i<lists.length;i++){
+        //     ans=merge(ans,lists[i]);
+        // }
 
-        return ans;
+        // return ans;
+        
+
+        return mergeSort(lists,0,lists.length-1);
 
     }
 }
