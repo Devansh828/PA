@@ -35,7 +35,7 @@ class Solution {
             curr=next;
         }
 
-        ListNode join=help(next,k);
+        ListNode join=help(curr,k);
 
         last.next=join;
 
