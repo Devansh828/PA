@@ -1,62 +1,36 @@
-class Node{
-    String url;
-
-    Node next;
-    Node prev;
-
-    public Node(String s){
-        url=s;
-    }
-}
 class BrowserHistory {
 
-    Node page;
-    Node curr;
-    // int size=0;
-
+    List<String> ans;
+    int index=-1;
 
     public BrowserHistory(String homepage) {
-        page=new Node(homepage);
-        curr=page;
-        // size++;
+        ans=new ArrayList<>();
+        ans.add(homepage);
+        index=0;
     }
     
     public void visit(String url) {
-        
-        curr.next=new Node(url);
-        curr.next.prev=curr;
-        curr=curr.next;
-        // int s=0;
-        // Node temp=page;
-        // while(temp!=curr){
-        //     s++;
-        //     temp=temp.next;
-        // }
-        // s++;
-        // size=s;
+        ans.subList(index+1,ans.size()).clear();
+        ans.add(url);
+        index++;
     }
     
     public String back(int steps) {
-        while(steps!=0){
-            if(curr.prev!=null){
-                curr=curr.prev;
-            }
-            steps--;
-        }
+        for(int i=steps;i>0;i--){
+            if(index==0) break;
+            index--;
 
-        return curr.url;
+        }
+        return ans.get(index);
     }
     
     public String forward(int steps) {
-        while(steps!=0){
-            if(curr.next!=null){
-                curr=curr.next;
-            }
-            steps--;
-        }
+        for(int i=steps;i>0;i--){
+            if( index==ans.size()-1) break;
+            index++;
 
-        return curr.url;
-        
+        }
+        return ans.get(index);
     }
 }
 
