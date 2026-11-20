@@ -1,38 +1,35 @@
 class Solution {
     public boolean checkValidString(String s) {
-        Stack<Integer> st1=new Stack<>();
-        Stack<Integer> st2=new Stack<>();
+        Deque<Integer> star=new ArrayDeque<>();
+        Deque<Integer> bracket=new ArrayDeque<>();
 
         for(int i=0;i<s.length();i++){
             char c=s.charAt(i);
 
-            if(c=='*')  st2.push(i);
+            if(c=='*') star.push(i);
 
-            else if(c=='(') st1.push(i);
+            else if(c=='(') bracket.push(i);
 
             else{
-                if(!st1.isEmpty()){
-                    if(st1.peek() < i){
-                        st1.pop();
-                    }
+                if(bracket.isEmpty()){
+                    if(star.isEmpty()) return false;
+                    else star.pop();
                 }
-                else if(!st2.isEmpty()){
-                    if(st2.peek() < i){
-                        st2.pop();
-                    }
+
+                else{
+                    bracket.pop();
                 }
-                else return false;
             }
+
         }
 
 
-        while(!st1.isEmpty() && !st2.isEmpty()){
-            if(st1.peek() > st2.peek()) return false;
+        while(!bracket.isEmpty()){
+            if(star.isEmpty()) return false;
 
-            st1.pop();
-            st2.pop();
+            if(star.pop()<bracket.pop()) return false;
         }
 
-        return st1.isEmpty();
+        return bracket.isEmpty();
     }
 }
