@@ -22,18 +22,20 @@ class Solution {
         Deque<TreeNode> q=new ArrayDeque<>();
         q.offer(root);
 
+        TreeNode n=null;
+
         while(!q.isEmpty()){
             int size = q.size();
-            List<Integer> level = new ArrayList<>();
+            // List<Integer> level = new ArrayList<>();
 
             for (int i = 0; i < size; i++) {
-                TreeNode n = q.poll();
-                level.add(n.val);
+                n = q.poll();
+                // level.add(n.val);
 
                 if (n.left != null) q.offer(n.left);
                 if (n.right != null) q.offer(n.right);
             }
-            ls.add(level.get(level.size()-1));
+            ls.add(n.val);
         }
 
         return ls;
